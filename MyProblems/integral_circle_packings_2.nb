@@ -1,0 +1,1795 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     73558,       1786]
+NotebookOptionsPosition[     72540,       1749]
+NotebookOutlinePosition[     72898,       1765]
+CellTagsIndexPosition[     72855,       1762]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.719741685726462*^9, 3.719741740981759*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"cmpToPt", "[", "z_", "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Re", "[", "z", "]"}], ",", 
+    RowBox[{"Im", "[", "z", "]"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"initCord", "[", 
+   RowBox[{"{", 
+    RowBox[{"a_", ",", "b_", ",", "c_", ",", "d_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "1"}], "/", "a"}], "-", 
+     RowBox[{"1", "/", "b"}]}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "1"}], "/", "a"}], "+", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"a", "-", "b"}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"a", "+", "b"}], ")"}]}], "/", "c"}], "+", 
+     RowBox[{"I", "*", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"a", "+", "b", "+", "c", "-", "d"}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"a", "+", "b"}], ")"}]}], "/", "c"}]}]}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "1"}], "/", "a"}], "+", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"a", "-", "b"}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"a", "+", "b"}], ")"}]}], "/", "d"}], "-", 
+     RowBox[{"I", "*", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"a", "+", "b", "+", "d", "-", "c"}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"a", "+", "b"}], ")"}]}], "/", "d"}]}]}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"expand4", "[", 
+   RowBox[{"{", 
+    RowBox[{"v1_", ",", "v2_", ",", "v3_", ",", "v4_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"v2", ",", "v3", ",", "v4", ",", 
+      RowBox[{
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"v2", "+", "v3", "+", "v4"}], ")"}]}], "-", "v1"}]}], "}"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"v1", ",", "v3", ",", "v4", ",", 
+      RowBox[{
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"v1", "+", "v3", "+", "v4"}], ")"}]}], "-", "v2"}]}], "}"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"v1", ",", "v2", ",", "v4", ",", 
+      RowBox[{
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"v1", "+", "v2", "+", "v4"}], ")"}]}], "-", "v3"}]}], "}"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"v1", ",", "v2", ",", "v3", ",", 
+      RowBox[{
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"v1", "+", "v2", "+", "v3"}], ")"}]}], "-", "v4"}]}], 
+     "}"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"expand3", "[", 
+   RowBox[{"{", 
+    RowBox[{"v1_", ",", "v2_", ",", "v3_", ",", "v4_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"v2", ",", "v3", ",", "v4", ",", 
+      RowBox[{
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"v2", "+", "v3", "+", "v4"}], ")"}]}], "-", "v1"}]}], "}"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"v1", ",", "v3", ",", "v4", ",", 
+      RowBox[{
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"v1", "+", "v3", "+", "v4"}], ")"}]}], "-", "v2"}]}], "}"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"v1", ",", "v2", ",", "v4", ",", 
+      RowBox[{
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"v1", "+", "v2", "+", "v4"}], ")"}]}], "-", "v3"}]}], 
+     "}"}]}], "}"}]}]}], "Input",
+ CellChangeTimes->{{3.7199129660874357`*^9, 3.7199130238231373`*^9}, 
+   3.7199130540403905`*^9, {3.7199132801627874`*^9, 3.719913284078395*^9}, {
+   3.7199134422626724`*^9, 3.7199137215187626`*^9}, {3.719913764543638*^9, 
+   3.7199137777880616`*^9}, {3.7199143554726763`*^9, 3.719914355737877*^9}, {
+   3.7199156709761868`*^9, 3.7199156794626017`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pairToCirc", "[", 
+   RowBox[{"c_", ",", "z_"}], "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"c", "<", "0"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"Thick", ",", 
+      RowBox[{"GrayLevel", "[", "0.2", "]"}], ",", 
+      RowBox[{"Circle", "[", 
+       RowBox[{
+        RowBox[{"cmpToPt", "[", "z", "]"}], ",", 
+        RowBox[{"1", "/", 
+         RowBox[{"Abs", "[", "c", "]"}]}]}], "]"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"Thin", ",", 
+      RowBox[{"GrayLevel", "[", "0.2", "]"}], ",", 
+      RowBox[{"Circle", "[", 
+       RowBox[{
+        RowBox[{"cmpToPt", "[", "z", "]"}], ",", 
+        RowBox[{"1", "/", 
+         RowBox[{"Abs", "[", "c", "]"}]}]}], "]"}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pairToCircDot", "[", 
+   RowBox[{"c_", ",", "z_"}], "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"c", "<", "0"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"Thick", ",", 
+      RowBox[{"GrayLevel", "[", "0.2", "]"}], ",", 
+      RowBox[{"Circle", "[", 
+       RowBox[{
+        RowBox[{"cmpToPt", "[", "z", "]"}], ",", 
+        RowBox[{"1", "/", 
+         RowBox[{"Abs", "[", "c", "]"}]}]}], "]"}], ",", 
+      RowBox[{"PointSize", "[", "Large", "]"}], ",", "Orange", ",", 
+      RowBox[{"Point", "[", 
+       RowBox[{"cmpToPt", "[", "z", "]"}], "]"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"Thin", ",", 
+      RowBox[{"GrayLevel", "[", "0.5", "]"}], ",", 
+      RowBox[{"Circle", "[", 
+       RowBox[{
+        RowBox[{"cmpToPt", "[", "z", "]"}], ",", 
+        RowBox[{"1", "/", 
+         RowBox[{"Abs", "[", "c", "]"}]}]}], "]"}], ",", 
+      RowBox[{"PointSize", "[", "Large", "]"}], ",", "Orange", ",", 
+      RowBox[{"Point", "[", 
+       RowBox[{"cmpToPt", "[", "z", "]"}], "]"}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pairToCircNew", "[", 
+   RowBox[{"c_", ",", "z_"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{"Thin", ",", 
+    RowBox[{"EdgeForm", "[", "Orange", "]"}], ",", "LightOrange", ",", 
+    RowBox[{"Disk", "[", 
+     RowBox[{
+      RowBox[{"cmpToPt", "[", "z", "]"}], ",", 
+      RowBox[{"1", "/", 
+       RowBox[{"Abs", "[", "c", "]"}]}]}], "]"}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pairToText", "[", 
+   RowBox[{"c_", ",", "z_", ",", "cmax_"}], "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"c", "<", "0"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"Text", "[", 
+      RowBox[{
+       RowBox[{"Style", "[", 
+        RowBox[{"c", ",", "30", ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}], ",", 
+         "LightGray", ",", "Bold"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"cmpToPt", "[", "z", "]"}], "+", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"0.8", "/", "c"}], ",", 
+          RowBox[{"0.8", "/", "c"}]}], "}"}]}]}], "]"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"Text", "[", 
+      RowBox[{
+       RowBox[{"Style", "[", 
+        RowBox[{"c", ",", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"c", "/", 
+             RowBox[{"Abs", "[", "cmax", "]"}]}], "<", "50"}], ",", "c", ",", 
+           "\"\<\>\""}], "]"}], ",", 
+         RowBox[{"200", "*", 
+          RowBox[{
+           RowBox[{"Abs", "[", "cmax", "]"}], "/", "c"}]}], ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}], ",", 
+         "LightGray", ",", "Bold"}], "]"}], ",", 
+       RowBox[{"cmpToPt", "[", "z", "]"}]}], "]"}], "}"}]}], 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.719913726900772*^9, 3.7199140835797987`*^9}, {
+  3.7199143609638863`*^9, 3.7199143675470977`*^9}, {3.7199154609842176`*^9, 
+  3.71991547368264*^9}, {3.719915690179821*^9, 3.7199158654305286`*^9}, {
+  3.719916318938925*^9, 3.7199163385325594`*^9}, {3.719916628708669*^9, 
+  3.7199166323746758`*^9}, {3.719916811915391*^9, 3.7199169011943474`*^9}, {
+  3.7199169391180143`*^9, 3.719916945529626*^9}, {3.7199178229999666`*^9, 
+  3.719917884557675*^9}, {3.71991792758255*^9, 3.719917964617016*^9}, {
+  3.7199180698548*^9, 3.719918070276001*^9}, {3.719918710407525*^9, 
+  3.7199187149003334`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"cinit", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "6"}], ",", "11", ",", "14", ",", "15"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"zinit", "=", 
+   RowBox[{"initCord", "[", "cinit", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7199132715671725`*^9, 3.7199132757011795`*^9}, {
+  3.719913339474092*^9, 3.719913345729703*^9}, {3.719913416912628*^9, 
+  3.719913428768649*^9}, {3.7199140928618155`*^9, 3.719914123032268*^9}, {
+  3.719915871249339*^9, 3.7199158762101474`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"vc1", "=", "cinit"}], ";", 
+  RowBox[{"vcz1", "=", 
+   RowBox[{"cinit", "*", "zinit"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vc2", "=", 
+   RowBox[{"expand4", "[", "vc1", "]"}]}], ";", 
+  RowBox[{"vcz2", "=", 
+   RowBox[{"expand4", "[", "vcz1", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vz2", "=", 
+   RowBox[{"vcz2", "/", "vc2"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vc3", "=", 
+   RowBox[{
+    RowBox[{"expand3", "/@", "vc2"}], "//", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{"#", ",", "1"}], "]"}], "&"}]}]}], ";", 
+  RowBox[{"vcz3", "=", 
+   RowBox[{
+    RowBox[{"expand3", "/@", "vcz2"}], "//", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{"#", ",", "1"}], "]"}], "&"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vz3", "=", 
+   RowBox[{"vcz3", "/", "vc3"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vc4", "=", 
+   RowBox[{
+    RowBox[{"expand3", "/@", "vc3"}], "//", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{"#", ",", "1"}], "]"}], "&"}]}]}], ";", 
+  RowBox[{"vcz4", "=", 
+   RowBox[{
+    RowBox[{"expand3", "/@", "vcz3"}], "//", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{"#", ",", "1"}], "]"}], "&"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vz4", "=", 
+   RowBox[{"vcz4", "/", "vc4"}]}], ";"}]}], "Input",
+ CellChangeTimes->{
+  3.7199145187113633`*^9, {3.7199147864702334`*^9, 3.719914920146868*^9}, {
+   3.719914956416932*^9, 3.7199149999722085`*^9}, {3.7199151031663895`*^9, 
+   3.719915187687338*^9}, {3.719915949405476*^9, 3.719915951277479*^9}, {
+   3.7199161517690315`*^9, 3.7199161905818996`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ggen1", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCirc", "[", 
+         RowBox[{
+          RowBox[{"cinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], ",", 
+          RowBox[{"zinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "4"}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Text", "[", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Generation 1\>\"", ",", "18", ",", 
+          RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"1.1", "/", 
+           RowBox[{"cinit", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ggen2", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCirc", "[", 
+         RowBox[{
+          RowBox[{"cinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], ",", 
+          RowBox[{"zinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "4"}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCircNew", "[", 
+         RowBox[{
+          RowBox[{"vc2", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}], ",", 
+          RowBox[{"vz2", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", 
+          RowBox[{"Length", "[", "vc2", "]"}]}], "}"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Text", "[", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Generation 2\>\"", ",", "18", ",", 
+          RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"1.1", "/", 
+           RowBox[{"cinit", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ggen3", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCirc", "[", 
+         RowBox[{
+          RowBox[{"cinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], ",", 
+          RowBox[{"zinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "4"}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCirc", "[", 
+         RowBox[{
+          RowBox[{"vc2", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}], ",", 
+          RowBox[{"vz2", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", 
+          RowBox[{"Length", "[", "vc2", "]"}]}], "}"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCircNew", "[", 
+         RowBox[{
+          RowBox[{"vc3", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}], ",", 
+          RowBox[{"vz3", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", 
+          RowBox[{"Length", "[", "vc3", "]"}]}], "}"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Text", "[", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Generation 3\>\"", ",", "18", ",", 
+          RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"1.1", "/", 
+           RowBox[{"cinit", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ggen4", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCirc", "[", 
+         RowBox[{
+          RowBox[{"cinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], ",", 
+          RowBox[{"zinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "4"}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCirc", "[", 
+         RowBox[{
+          RowBox[{"vc2", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}], ",", 
+          RowBox[{"vz2", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", 
+          RowBox[{"Length", "[", "vc2", "]"}]}], "}"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCirc", "[", 
+         RowBox[{
+          RowBox[{"vc3", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}], ",", 
+          RowBox[{"vz3", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", 
+          RowBox[{"Length", "[", "vc3", "]"}]}], "}"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCircNew", "[", 
+         RowBox[{
+          RowBox[{"vc4", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}], ",", 
+          RowBox[{"vz4", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", 
+          RowBox[{"Length", "[", "vc4", "]"}]}], "}"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Text", "[", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Generation 4\>\"", ",", "18", ",", 
+          RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"1.1", "/", 
+           RowBox[{"cinit", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"GraphicsGrid", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ggen1", ",", "ggen2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"ggen3", ",", "ggen4"}], "}"}]}], "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "600"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7199159640539017`*^9, 3.7199161349366016`*^9}, {
+  3.719916198101113*^9, 3.7199162662888327`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{InsetBox[
+      GraphicsBox[{{
+         {GrayLevel[0.2], Thickness[Large], 
+          CircleBox[{0, 0}, NCache[Rational[1, 6], 0.16666666666666666`]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[NCache[{Rational[5, 66], 0}, {0.07575757575757576, 0}], 
+           NCache[Rational[1, 11], 0.09090909090909091]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-8, 105], Rational[2, 35]}, {-0.0761904761904762, 
+            0.05714285714285714}], NCache[
+           Rational[1, 14], 0.07142857142857142]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-3, 50], Rational[-2, 25]}, {-0.06, -0.08}], 
+           NCache[Rational[1, 15], 0.06666666666666667]]}}, InsetBox[
+         StyleBox["\<\"Generation 1\"\>",
+          StripOnInput->False,
+          FontFamily->"Times New Roman",
+          FontSize->18], {0, -0.18333333333333335`}]}], {192., -201.59999999999997`},
+       ImageScaled[{0.5, 0.5}], {360., 377.9999999999999}], InsetBox[
+      GraphicsBox[{{
+         {GrayLevel[0.2], Thickness[Large], 
+          CircleBox[{0, 0}, NCache[Rational[1, 6], 0.16666666666666666`]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[NCache[{Rational[5, 66], 0}, {0.07575757575757576, 0}], 
+           NCache[Rational[1, 11], 0.09090909090909091]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-8, 105], Rational[2, 35]}, {-0.0761904761904762, 
+            0.05714285714285714}], NCache[
+           Rational[1, 14], 0.07142857142857142]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-3, 50], Rational[-2, 25]}, {-0.06, -0.08}], 
+           NCache[Rational[1, 15], 0.06666666666666667]]}}, {
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-17, 645], 
+             Rational[-2, 
+              215]}, {-0.02635658914728682, -0.009302325581395349}], NCache[
+           Rational[1, 86], 0.011627906976744186`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-143, 1050], 
+             Rational[-4, 
+              175]}, {-0.1361904761904762, -0.022857142857142857`}], NCache[
+           Rational[1, 35], 0.02857142857142857]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[7, 195], Rational[-8, 65]}, {
+            0.035897435897435895`, -0.12307692307692308`}], NCache[
+           Rational[1, 26], 0.038461538461538464`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[13, 690], Rational[14, 115]}, {
+            0.01884057971014493, 0.12173913043478261`}], NCache[
+           Rational[1, 23], 0.043478260869565216`]]}}, InsetBox[
+         StyleBox["\<\"Generation 2\"\>",
+          StripOnInput->False,
+          FontFamily->"Times New Roman",
+          FontSize->18], {0, -0.18333333333333335`}]}], {576., -201.59999999999997`},
+       ImageScaled[{0.5, 0.5}], {360., 377.9999999999999}]}, {InsetBox[
+      GraphicsBox[{{
+         {GrayLevel[0.2], Thickness[Large], 
+          CircleBox[{0, 0}, NCache[Rational[1, 6], 0.16666666666666666`]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[NCache[{Rational[5, 66], 0}, {0.07575757575757576, 0}], 
+           NCache[Rational[1, 11], 0.09090909090909091]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-8, 105], Rational[2, 35]}, {-0.0761904761904762, 
+            0.05714285714285714}], NCache[
+           Rational[1, 14], 0.07142857142857142]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-3, 50], Rational[-2, 25]}, {-0.06, -0.08}], 
+           NCache[Rational[1, 15], 0.06666666666666667]]}}, {
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-17, 645], 
+             Rational[-2, 
+              215]}, {-0.02635658914728682, -0.009302325581395349}], NCache[
+           Rational[1, 86], 0.011627906976744186`]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-143, 1050], 
+             Rational[-4, 
+              175]}, {-0.1361904761904762, -0.022857142857142857`}], NCache[
+           Rational[1, 35], 0.02857142857142857]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[7, 195], Rational[-8, 65]}, {
+            0.035897435897435895`, -0.12307692307692308`}], NCache[
+           Rational[1, 26], 0.038461538461538464`]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[13, 690], Rational[14, 115]}, {
+            0.01884057971014493, 0.12173913043478261`}], NCache[
+           Rational[1, 23], 0.043478260869565216`]]}}, {
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-31, 730], 
+             Rational[-4, 
+              365]}, {-0.04246575342465753, -0.010958904109589041`}], NCache[
+           Rational[1, 219], 0.0045662100456621]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-3, 175], 
+             Rational[-4, 
+              175]}, {-0.017142857142857144`, -0.022857142857142857`}], 
+           NCache[Rational[1, 210], 0.004761904761904762]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-41, 2070], Rational[2, 345]}, {-0.019806763285024155`, 
+            0.005797101449275362}], NCache[
+           Rational[1, 207], 0.004830917874396135]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-101, 1005], 
+             Rational[-6, 
+              335]}, {-0.10049751243781095`, -0.01791044776119403}], NCache[
+           Rational[1, 134], 0.007462686567164179]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-77, 555], 
+             Rational[-12, 
+              185]}, {-0.13873873873873874`, -0.06486486486486487}], NCache[
+           Rational[1, 74], 0.013513513513513514`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-323, 2130], Rational[6, 355]}, {-0.1516431924882629, 
+            0.016901408450704224`}], NCache[
+           Rational[1, 71], 0.014084507042253521`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[13, 825], Rational[-2, 25]}, {
+            0.01575757575757576, -0.08}], NCache[
+           Rational[1, 110], 0.00909090909090909]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-23, 1770], 
+             Rational[-44, 
+              295]}, {-0.012994350282485875`, -0.14915254237288136`}], NCache[
+           Rational[1, 59], 0.01694915254237288]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[133, 1410], Rational[-26, 235]}, {
+            0.09432624113475177, -0.11063829787234042`}], NCache[
+           Rational[1, 47], 0.02127659574468085]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[1, 255], Rational[6, 85]}, {
+            0.00392156862745098, 0.07058823529411765}], NCache[
+           Rational[1, 102], 0.00980392156862745]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-7, 170], Rational[12, 85]}, {-0.041176470588235294`, 
+            0.1411764705882353}], NCache[
+           Rational[1, 51], 0.0196078431372549]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[3, 35], Rational[4, 35]}, {
+            0.08571428571428572, 0.11428571428571428`}], NCache[
+           Rational[1, 42], 0.023809523809523808`]]}}, InsetBox[
+         StyleBox["\<\"Generation 3\"\>",
+          StripOnInput->False,
+          FontFamily->"Times New Roman",
+          FontSize->18], {0, -0.18333333333333335`}]}], {192., -604.8}, 
+      ImageScaled[{0.5, 0.5}], {360., 377.9999999999999}], InsetBox[
+      GraphicsBox[{{
+         {GrayLevel[0.2], Thickness[Large], 
+          CircleBox[{0, 0}, NCache[Rational[1, 6], 0.16666666666666666`]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[NCache[{Rational[5, 66], 0}, {0.07575757575757576, 0}], 
+           NCache[Rational[1, 11], 0.09090909090909091]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-8, 105], Rational[2, 35]}, {-0.0761904761904762, 
+            0.05714285714285714}], NCache[
+           Rational[1, 14], 0.07142857142857142]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-3, 50], Rational[-2, 25]}, {-0.06, -0.08}], 
+           NCache[Rational[1, 15], 0.06666666666666667]]}}, {
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-17, 645], 
+             Rational[-2, 
+              215]}, {-0.02635658914728682, -0.009302325581395349}], NCache[
+           Rational[1, 86], 0.011627906976744186`]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-143, 1050], 
+             Rational[-4, 
+              175]}, {-0.1361904761904762, -0.022857142857142857`}], NCache[
+           Rational[1, 35], 0.02857142857142857]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[7, 195], Rational[-8, 65]}, {
+            0.035897435897435895`, -0.12307692307692308`}], NCache[
+           Rational[1, 26], 0.038461538461538464`]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[13, 690], Rational[14, 115]}, {
+            0.01884057971014493, 0.12173913043478261`}], NCache[
+           Rational[1, 23], 0.043478260869565216`]]}}, {
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-31, 730], 
+             Rational[-4, 
+              365]}, {-0.04246575342465753, -0.010958904109589041`}], NCache[
+           Rational[1, 219], 0.0045662100456621]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-3, 175], 
+             Rational[-4, 
+              175]}, {-0.017142857142857144`, -0.022857142857142857`}], 
+           NCache[Rational[1, 210], 0.004761904761904762]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-41, 2070], Rational[
+             2, 345]}, {-0.019806763285024155`, 0.005797101449275362}], 
+           NCache[Rational[1, 207], 0.004830917874396135]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-101, 1005], 
+             Rational[-6, 
+              335]}, {-0.10049751243781095`, -0.01791044776119403}], NCache[
+           Rational[1, 134], 0.007462686567164179]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-77, 555], 
+             Rational[-12, 
+              185]}, {-0.13873873873873874`, -0.06486486486486487}], NCache[
+           Rational[1, 74], 0.013513513513513514`]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-323, 2130], Rational[
+             6, 355]}, {-0.1516431924882629, 0.016901408450704224`}], NCache[
+           Rational[1, 71], 0.014084507042253521`]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[13, 825], Rational[-2, 25]}, {
+            0.01575757575757576, -0.08}], NCache[
+           Rational[1, 110], 0.00909090909090909]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-23, 1770], 
+             Rational[-44, 
+              295]}, {-0.012994350282485875`, -0.14915254237288136`}], NCache[
+           Rational[1, 59], 0.01694915254237288]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[133, 1410], Rational[-26, 235]}, {
+            0.09432624113475177, -0.11063829787234042`}], NCache[
+           Rational[1, 47], 0.02127659574468085]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[1, 255], Rational[6, 85]}, {0.00392156862745098, 
+            0.07058823529411765}], NCache[
+           Rational[1, 102], 0.00980392156862745]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[-7, 170], Rational[
+             12, 85]}, {-0.041176470588235294`, 0.1411764705882353}], NCache[
+           Rational[1, 51], 0.0196078431372549]]}, 
+         {GrayLevel[0.2], Thickness[Tiny], 
+          CircleBox[
+           NCache[{Rational[3, 35], Rational[4, 35]}, {0.08571428571428572, 
+            0.11428571428571428`}], NCache[
+           Rational[1, 42], 0.023809523809523808`]]}}, {
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-179, 4695], 
+             Rational[-24, 
+              1565]}, {-0.03812566560170394, -0.015335463258785943`}], NCache[
+           Rational[1, 626], 0.001597444089456869]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-731, 18690], 
+             Rational[-18, 
+              3115]}, {-0.03911182450508293, -0.005778491171749599}], NCache[
+           Rational[1, 623], 0.0016051364365971107`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-152, 3075], 
+             Rational[-12, 
+              1025]}, {-0.04943089430894309, -0.011707317073170732`}], NCache[
+           Rational[1, 410], 0.0024390243902439024`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-431, 18330], 
+             Rational[-68, 
+              3055]}, {-0.023513366066557555`, -0.02225859247135843}], NCache[
+           Rational[1, 611], 0.0016366612111292963`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-55, 3594], 
+             Rational[-10, 
+              599]}, {-0.01530328324986088, -0.01669449081803005}], NCache[
+           Rational[1, 599], 0.001669449081803005]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-38, 2895], 
+             Rational[-28, 
+              965]}, {-0.013126079447322971`, -0.029015544041450778`}], 
+           NCache[Rational[1, 386], 0.0025906735751295338`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-157, 6030], Rational[4, 1005]}, {-0.02603648424543947, 
+            0.003980099502487562}], NCache[
+           Rational[1, 603], 0.001658374792703151]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[-5, 297], 0}, {-0.016835016835016835`, 0}],
+            NCache[Rational[1, 594], 0.0016835016835016834`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-16, 945], Rational[4, 315]}, {-0.016931216931216932`, 
+            0.012698412698412698`}], NCache[
+           Rational[1, 378], 0.0026455026455026454`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-31, 295], 
+             Rational[-8, 
+              295]}, {-0.10508474576271186`, -0.02711864406779661}], NCache[
+           Rational[1, 354], 0.002824858757062147]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-29, 270], 
+             Rational[-2, 
+              195]}, {-0.10740740740740741`, -0.010256410256410256`}], NCache[
+           Rational[1, 351], 0.002849002849002849]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-87, 970], 
+             Rational[-8, 
+              485]}, {-0.08969072164948454, -0.016494845360824743`}], NCache[
+           Rational[1, 291], 0.003436426116838488]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-239, 1905], 
+             Rational[-34, 
+              635]}, {-0.12545931758530185`, -0.05354330708661417}], NCache[
+           Rational[1, 254], 0.003937007874015748]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-175, 1146], 
+             Rational[-10, 
+              191]}, {-0.15270506108202445`, -0.05235602094240838}], NCache[
+           Rational[1, 191], 0.005235602094240838]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-527, 3930], 
+             Rational[-56, 
+              655]}, {-0.1340966921119593, -0.08549618320610687}], NCache[
+           Rational[1, 131], 0.007633587786259542]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-83, 615], Rational[2, 205]}, {-0.13495934959349593`, 
+            0.00975609756097561}], NCache[
+           Rational[1, 246], 0.0040650406504065045`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[-5, 31], 0}, {-0.16129032258064516`, 0}], 
+           NCache[Rational[1, 186], 0.005376344086021506]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-63, 410], Rational[8, 205]}, {-0.15365853658536585`, 
+            0.03902439024390244}], NCache[
+           Rational[1, 123], 0.008130081300813009]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[9, 970], Rational[-44, 485]}, {
+            0.009278350515463918, -0.09072164948453608}], NCache[
+           Rational[1, 291], 0.003436426116838488]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[79, 2790], Rational[-38, 465]}, {
+            0.028315412186379927`, -0.08172043010752689}], NCache[
+           Rational[1, 279], 0.0035842293906810036`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[2, 205], Rational[-14, 205]}, {
+            0.00975609756097561, -0.06829268292682927}], NCache[
+           Rational[1, 246], 0.0040650406504065045`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-11, 1545], 
+             Rational[-66, 
+              515]}, {-0.007119741100323625, -0.12815533980582525`}], NCache[
+           Rational[1, 206], 0.0048543689320388345`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[37, 4290], Rational[-114, 715]}, {
+            0.008624708624708625, -0.15944055944055943`}], NCache[
+           Rational[1, 143], 0.006993006993006993]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-32, 825], 
+             Rational[-42, 
+              275]}, {-0.03878787878787879, -0.15272727272727274`}], NCache[
+           Rational[1, 110], 0.00909090909090909]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[31, 435], Rational[-14, 145]}, {
+            0.07126436781609195, -0.09655172413793103}], NCache[
+           Rational[1, 174], 0.005747126436781609]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[33, 410], Rational[-28, 205]}, {
+            0.08048780487804878, -0.13658536585365855`}], NCache[
+           Rational[1, 123], 0.008130081300813009]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[8, 65], Rational[-6, 65]}, {
+            0.12307692307692308`, -0.09230769230769231}], NCache[
+           Rational[1, 78], 0.01282051282051282]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-13, 2670], Rational[36, 445]}, {-0.0048689138576779025`,
+             0.08089887640449438}], NCache[
+           Rational[1, 267], 0.003745318352059925]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[11, 645], Rational[16, 215]}, {
+            0.017054263565891473`, 0.07441860465116279}], NCache[
+           Rational[1, 258], 0.003875968992248062]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-1, 2310], Rational[2, 35]}, {-0.0004329004329004329, 
+            0.05714285714285714}], NCache[
+           Rational[1, 231], 0.004329004329004329]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-41, 1365], Rational[54, 455]}, {-0.030036630036630037`, 
+            0.11868131868131868`}], NCache[
+           Rational[1, 182], 0.005494505494505495]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-17, 915], Rational[48, 305]}, {-0.018579234972677595`, 
+            0.15737704918032788`}], NCache[
+           Rational[1, 122], 0.00819672131147541]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{
+            Rational[-203, 2850], Rational[66, 475]}, {-0.0712280701754386, 
+            0.13894736842105262`}], NCache[
+           Rational[1, 95], 0.010526315789473684`]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[73, 1185], Rational[38, 395]}, {
+            0.06160337552742616, 0.09620253164556962}], NCache[
+           Rational[1, 158], 0.006329113924050633]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[217, 3210], Rational[76, 535]}, {
+            0.067601246105919, 0.14205607476635515`}], NCache[
+           Rational[1, 107], 0.009345794392523364]]}, 
+         {RGBColor[1, 0.9, 0.8], Thickness[Tiny], EdgeForm[RGBColor[
+          1, 0.5, 0]], 
+          DiskBox[NCache[{Rational[253, 2130], Rational[34, 355]}, {
+            0.1187793427230047, 0.09577464788732394}], NCache[
+           Rational[1, 71], 0.014084507042253521`]]}}, InsetBox[
+         StyleBox["\<\"Generation 4\"\>",
+          StripOnInput->False,
+          FontFamily->"Times New Roman",
+          FontSize->18], {0, -0.18333333333333335`}]}], {576., -604.8}, 
+      ImageScaled[{0.5, 0.5}], {360., 377.9999999999999}]}}, {}},
+  ContentSelectable->True,
+  ImageSize->600,
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{
+  3.7199160634728765`*^9, {3.7199160980893373`*^9, 3.719916135669803*^9}, {
+   3.7199161683986607`*^9, 3.7199162681608357`*^9}, 3.7199166356506815`*^9, 
+   3.719916861523478*^9, 3.7199169171687756`*^9, 3.7199169483064303`*^9, 
+   3.7199176706344995`*^9, 3.719917785622301*^9, 3.7199178366187906`*^9, 
+   3.7199178679592457`*^9, 3.71991791011052*^9, 3.7199179488453875`*^9, 
+   3.7199179936018667`*^9, 3.7199180740200076`*^9, 3.7199181069828653`*^9, 
+   3.7199185127083783`*^9, 3.7199186575546327`*^9, 3.719918731873163*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pthull2", "=", 
+   RowBox[{"cmpToPt", "/@", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"zinit", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], ",", 
+      RowBox[{"vz2", "[", 
+       RowBox[{"[", 
+        RowBox[{"4", ",", "4"}], "]"}], "]"}], ",", 
+      RowBox[{"zinit", "[", 
+       RowBox[{"[", "3", "]"}], "]"}], ",", 
+      RowBox[{"vz2", "[", 
+       RowBox[{"[", 
+        RowBox[{"2", ",", "4"}], "]"}], "]"}], ",", 
+      RowBox[{"zinit", "[", 
+       RowBox[{"[", "4", "]"}], "]"}], ",", 
+      RowBox[{"vz2", "[", 
+       RowBox[{"[", 
+        RowBox[{"3", ",", "4"}], "]"}], "]"}]}], "}"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pthull3", "=", 
+   RowBox[{"cmpToPt", "/@", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"vz3", "[", 
+       RowBox[{"[", 
+        RowBox[{"12", ",", "4"}], "]"}], "]"}], ",", 
+      RowBox[{"vz3", "[", 
+       RowBox[{"[", 
+        RowBox[{"11", ",", "4"}], "]"}], "]"}], ",", 
+      RowBox[{"vz3", "[", 
+       RowBox[{"[", 
+        RowBox[{"6", ",", "4"}], "]"}], "]"}], ",", 
+      RowBox[{"vz3", "[", 
+       RowBox[{"[", 
+        RowBox[{"5", ",", "4"}], "]"}], "]"}], ",", 
+      RowBox[{"vz3", "[", 
+       RowBox[{"[", 
+        RowBox[{"8", ",", "4"}], "]"}], "]"}], ",", 
+      RowBox[{"vz3", "[", 
+       RowBox[{"[", 
+        RowBox[{"9", ",", "4"}], "]"}], "]"}]}], "}"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.719916397594263*^9, 3.7199164809452095`*^9}, {
+  3.719916961129653*^9, 3.7199170179293528`*^9}, {3.719917092403884*^9, 
+  3.7199171193139305`*^9}, {3.719917153493591*^9, 3.719917155677595*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ghull2", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCircDot", "[", 
+         RowBox[{
+          RowBox[{"cinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], ",", 
+          RowBox[{"zinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "4"}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      " ", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToText", "[", 
+         RowBox[{
+          RowBox[{"cinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], ",", 
+          RowBox[{"zinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], ",", 
+          RowBox[{"cinit", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "4"}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCircDot", "[", 
+         RowBox[{
+          RowBox[{"vc2", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}], ",", 
+          RowBox[{"vz2", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", 
+          RowBox[{"Length", "[", "vc2", "]"}]}], "}"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Opacity", "[", "0.4", "]"}], ",", 
+        RowBox[{"EdgeForm", "[", 
+         RowBox[{"{", 
+          RowBox[{"Thick", ",", "Blue"}], "}"}], "]"}], ",", "LightBlue", ",", 
+        RowBox[{"Polygon", "[", "pthull2", "]"}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Text", "[", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Generation 2\>\"", ",", "18", ",", 
+          RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"1.1", "/", 
+           RowBox[{"cinit", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ghull3", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCircDot", "[", 
+         RowBox[{
+          RowBox[{"cinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], ",", 
+          RowBox[{"zinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "4"}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      " ", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToText", "[", 
+         RowBox[{
+          RowBox[{"cinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], ",", 
+          RowBox[{"zinit", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], ",", 
+          RowBox[{"cinit", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "4"}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCircDot", "[", 
+         RowBox[{
+          RowBox[{"vc2", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}], ",", 
+          RowBox[{"vz2", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", 
+          RowBox[{"Length", "[", "vc2", "]"}]}], "}"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"pairToCircDot", "[", 
+         RowBox[{
+          RowBox[{"vc3", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}], ",", 
+          RowBox[{"vz3", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "4"}], "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", 
+          RowBox[{"Length", "[", "vc3", "]"}]}], "}"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Opacity", "[", "0.4", "]"}], ",", 
+        RowBox[{"EdgeForm", "[", 
+         RowBox[{"{", 
+          RowBox[{"Thick", ",", "Blue"}], "}"}], "]"}], ",", "LightBlue", ",", 
+        RowBox[{"Polygon", "[", "pthull3", "]"}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Text", "[", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Generation 3\>\"", ",", "18", ",", 
+          RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"1.1", "/", 
+           RowBox[{"cinit", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"ghull2", ",", "ghull3"}], "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "800"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.719916486264819*^9, 3.719916620612255*^9}, {
+  3.7199166516719093`*^9, 3.719916790512153*^9}, {3.719916912504368*^9, 
+  3.71991691397077*^9}, {3.71991702772617*^9, 3.719917061219429*^9}, {
+  3.7199179755058346`*^9, 3.7199179892026587`*^9}, {3.719918092989641*^9, 
+  3.719918094066043*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     GraphicsBox[{{
+        {GrayLevel[0.2], Thickness[Large], 
+         CircleBox[{0, 0}, NCache[Rational[1, 6], 0.16666666666666666`]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], PointBox[{0, 0}]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[NCache[{Rational[5, 66], 0}, {0.07575757575757576, 0}], 
+          NCache[Rational[1, 11], 0.09090909090909091]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[NCache[{Rational[5, 66], 0}, {0.07575757575757576, 0}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-8, 105], Rational[2, 35]}, {-0.0761904761904762, 
+           0.05714285714285714}], NCache[
+          Rational[1, 14], 0.07142857142857142]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-8, 105], Rational[2, 35]}, {-0.0761904761904762, 
+            0.05714285714285714}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-3, 50], Rational[-2, 25]}, {-0.06, -0.08}], 
+          NCache[Rational[1, 15], 0.06666666666666667]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-3, 50], Rational[-2, 25]}, {-0.06, -0.08}]]}}}, {
+        InsetBox[
+         StyleBox[
+          RowBox[{"-", "6"}],
+          StripOnInput->False,
+          LineColor->GrayLevel[0.85],
+          FrontFaceColor->GrayLevel[0.85],
+          BackFaceColor->GrayLevel[0.85],
+          GraphicsColor->GrayLevel[0.85],
+          FontFamily->"Times New Roman",
+          FontSize->30,
+          FontWeight->Bold,
+          
+          FontColor->GrayLevel[
+           0.85]], {-0.13333333333333333`, -0.13333333333333333`}], InsetBox[
+         StyleBox["11",
+          StripOnInput->False,
+          LineColor->GrayLevel[0.85],
+          FrontFaceColor->GrayLevel[0.85],
+          BackFaceColor->GrayLevel[0.85],
+          GraphicsColor->GrayLevel[0.85],
+          FontFamily->"Times New Roman",
+          FontSize->Rational[1200, 11],
+          FontWeight->Bold,
+          FontColor->GrayLevel[0.85]], 
+         NCache[{Rational[5, 66], 0}, {0.07575757575757576, 0}]], InsetBox[
+         StyleBox["14",
+          StripOnInput->False,
+          LineColor->GrayLevel[0.85],
+          FrontFaceColor->GrayLevel[0.85],
+          BackFaceColor->GrayLevel[0.85],
+          GraphicsColor->GrayLevel[0.85],
+          FontFamily->"Times New Roman",
+          FontSize->Rational[600, 7],
+          FontWeight->Bold,
+          FontColor->GrayLevel[0.85]], 
+         NCache[{Rational[-8, 105], Rational[2, 35]}, {-0.0761904761904762, 
+          0.05714285714285714}]], InsetBox[
+         StyleBox["15",
+          StripOnInput->False,
+          LineColor->GrayLevel[0.85],
+          FrontFaceColor->GrayLevel[0.85],
+          BackFaceColor->GrayLevel[0.85],
+          GraphicsColor->GrayLevel[0.85],
+          FontFamily->"Times New Roman",
+          FontSize->80,
+          FontWeight->Bold,
+          FontColor->GrayLevel[0.85]], 
+         NCache[{Rational[-3, 50], Rational[-2, 25]}, {-0.06, -0.08}]]}, {
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-17, 645], 
+            Rational[-2, 
+             215]}, {-0.02635658914728682, -0.009302325581395349}], NCache[
+          Rational[1, 86], 0.011627906976744186`]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-17, 645], 
+             Rational[-2, 
+              215]}, {-0.02635658914728682, -0.009302325581395349}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-143, 1050], 
+            Rational[-4, 
+             175]}, {-0.1361904761904762, -0.022857142857142857`}], NCache[
+          Rational[1, 35], 0.02857142857142857]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-143, 1050], 
+             Rational[-4, 
+              175]}, {-0.1361904761904762, -0.022857142857142857`}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[7, 195], Rational[-8, 65]}, {
+           0.035897435897435895`, -0.12307692307692308`}], NCache[
+          Rational[1, 26], 0.038461538461538464`]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[7, 195], Rational[-8, 65]}, {
+            0.035897435897435895`, -0.12307692307692308`}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[13, 690], Rational[14, 115]}, {0.01884057971014493,
+            0.12173913043478261`}], NCache[
+          Rational[1, 23], 0.043478260869565216`]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[13, 690], Rational[14, 115]}, {
+            0.01884057971014493, 0.12173913043478261`}]]}}}, 
+       {RGBColor[0.87, 0.94, 1], Opacity[0.4], EdgeForm[{RGBColor[0, 0, 1], 
+        Thickness[Large]}], 
+        PolygonBox[
+         NCache[{{Rational[5, 66], 0}, {
+           Rational[13, 690], Rational[14, 115]}, {
+           Rational[-8, 105], Rational[2, 35]}, {
+           Rational[-143, 1050], Rational[-4, 175]}, {
+           Rational[-3, 50], Rational[-2, 25]}, {
+           Rational[7, 195], Rational[-8, 65]}}, {{0.07575757575757576, 0}, {
+           0.01884057971014493, 0.12173913043478261`}, {-0.0761904761904762, 
+           0.05714285714285714}, {-0.1361904761904762, \
+-0.022857142857142857`}, {-0.06, -0.08}, {
+           0.035897435897435895`, -0.12307692307692308`}}]]}, InsetBox[
+        StyleBox["\<\"Generation 2\"\>",
+         StripOnInput->False,
+         FontFamily->"Times New Roman",
+         FontSize->18], {0, -0.18333333333333335`}]}], {192., -198.44999999999996`},
+      ImageScaled[{0.5, 0.5}], {360., 377.99999999999994`}], InsetBox[
+     GraphicsBox[{{
+        {GrayLevel[0.2], Thickness[Large], 
+         CircleBox[{0, 0}, NCache[Rational[1, 6], 0.16666666666666666`]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], PointBox[{0, 0}]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[NCache[{Rational[5, 66], 0}, {0.07575757575757576, 0}], 
+          NCache[Rational[1, 11], 0.09090909090909091]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[NCache[{Rational[5, 66], 0}, {0.07575757575757576, 0}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-8, 105], Rational[2, 35]}, {-0.0761904761904762, 
+           0.05714285714285714}], NCache[
+          Rational[1, 14], 0.07142857142857142]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-8, 105], Rational[2, 35]}, {-0.0761904761904762, 
+            0.05714285714285714}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-3, 50], Rational[-2, 25]}, {-0.06, -0.08}], 
+          NCache[Rational[1, 15], 0.06666666666666667]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-3, 50], Rational[-2, 25]}, {-0.06, -0.08}]]}}}, {
+        InsetBox[
+         StyleBox[
+          RowBox[{"-", "6"}],
+          StripOnInput->False,
+          LineColor->GrayLevel[0.85],
+          FrontFaceColor->GrayLevel[0.85],
+          BackFaceColor->GrayLevel[0.85],
+          GraphicsColor->GrayLevel[0.85],
+          FontFamily->"Times New Roman",
+          FontSize->30,
+          FontWeight->Bold,
+          
+          FontColor->GrayLevel[
+           0.85]], {-0.13333333333333333`, -0.13333333333333333`}], InsetBox[
+         StyleBox["11",
+          StripOnInput->False,
+          LineColor->GrayLevel[0.85],
+          FrontFaceColor->GrayLevel[0.85],
+          BackFaceColor->GrayLevel[0.85],
+          GraphicsColor->GrayLevel[0.85],
+          FontFamily->"Times New Roman",
+          FontSize->Rational[1200, 11],
+          FontWeight->Bold,
+          FontColor->GrayLevel[0.85]], 
+         NCache[{Rational[5, 66], 0}, {0.07575757575757576, 0}]], InsetBox[
+         StyleBox["14",
+          StripOnInput->False,
+          LineColor->GrayLevel[0.85],
+          FrontFaceColor->GrayLevel[0.85],
+          BackFaceColor->GrayLevel[0.85],
+          GraphicsColor->GrayLevel[0.85],
+          FontFamily->"Times New Roman",
+          FontSize->Rational[600, 7],
+          FontWeight->Bold,
+          FontColor->GrayLevel[0.85]], 
+         NCache[{Rational[-8, 105], Rational[2, 35]}, {-0.0761904761904762, 
+          0.05714285714285714}]], InsetBox[
+         StyleBox["15",
+          StripOnInput->False,
+          LineColor->GrayLevel[0.85],
+          FrontFaceColor->GrayLevel[0.85],
+          BackFaceColor->GrayLevel[0.85],
+          GraphicsColor->GrayLevel[0.85],
+          FontFamily->"Times New Roman",
+          FontSize->80,
+          FontWeight->Bold,
+          FontColor->GrayLevel[0.85]], 
+         NCache[{Rational[-3, 50], Rational[-2, 25]}, {-0.06, -0.08}]]}, {
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-17, 645], 
+            Rational[-2, 
+             215]}, {-0.02635658914728682, -0.009302325581395349}], NCache[
+          Rational[1, 86], 0.011627906976744186`]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-17, 645], 
+             Rational[-2, 
+              215]}, {-0.02635658914728682, -0.009302325581395349}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-143, 1050], 
+            Rational[-4, 
+             175]}, {-0.1361904761904762, -0.022857142857142857`}], NCache[
+          Rational[1, 35], 0.02857142857142857]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-143, 1050], 
+             Rational[-4, 
+              175]}, {-0.1361904761904762, -0.022857142857142857`}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[7, 195], Rational[-8, 65]}, {
+           0.035897435897435895`, -0.12307692307692308`}], NCache[
+          Rational[1, 26], 0.038461538461538464`]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[7, 195], Rational[-8, 65]}, {
+            0.035897435897435895`, -0.12307692307692308`}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[13, 690], Rational[14, 115]}, {0.01884057971014493,
+            0.12173913043478261`}], NCache[
+          Rational[1, 23], 0.043478260869565216`]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[13, 690], Rational[14, 115]}, {
+            0.01884057971014493, 0.12173913043478261`}]]}}}, {
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-31, 730], 
+            Rational[-4, 
+             365]}, {-0.04246575342465753, -0.010958904109589041`}], NCache[
+          Rational[1, 219], 0.0045662100456621]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-31, 730], 
+             Rational[-4, 
+              365]}, {-0.04246575342465753, -0.010958904109589041`}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-3, 175], 
+            Rational[-4, 
+             175]}, {-0.017142857142857144`, -0.022857142857142857`}], NCache[
+          Rational[1, 210], 0.004761904761904762]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-3, 175], 
+             Rational[-4, 
+              175]}, {-0.017142857142857144`, -0.022857142857142857`}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-41, 2070], Rational[
+            2, 345]}, {-0.019806763285024155`, 0.005797101449275362}], NCache[
+          Rational[1, 207], 0.004830917874396135]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-41, 2070], Rational[
+             2, 345]}, {-0.019806763285024155`, 0.005797101449275362}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-101, 1005], 
+            Rational[-6, 
+             335]}, {-0.10049751243781095`, -0.01791044776119403}], NCache[
+          Rational[1, 134], 0.007462686567164179]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-101, 1005], 
+             Rational[-6, 
+              335]}, {-0.10049751243781095`, -0.01791044776119403}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-77, 555], 
+            Rational[-12, 
+             185]}, {-0.13873873873873874`, -0.06486486486486487}], NCache[
+          Rational[1, 74], 0.013513513513513514`]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-77, 555], 
+             Rational[-12, 
+              185]}, {-0.13873873873873874`, -0.06486486486486487}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-323, 2130], Rational[
+            6, 355]}, {-0.1516431924882629, 0.016901408450704224`}], NCache[
+          Rational[1, 71], 0.014084507042253521`]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-323, 2130], Rational[
+             6, 355]}, {-0.1516431924882629, 0.016901408450704224`}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[13, 825], Rational[-2, 25]}, {
+           0.01575757575757576, -0.08}], NCache[
+          Rational[1, 110], 0.00909090909090909]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[13, 825], Rational[-2, 25]}, {
+            0.01575757575757576, -0.08}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-23, 1770], 
+            Rational[-44, 
+             295]}, {-0.012994350282485875`, -0.14915254237288136`}], NCache[
+          Rational[1, 59], 0.01694915254237288]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-23, 1770], 
+             Rational[-44, 
+              295]}, {-0.012994350282485875`, -0.14915254237288136`}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[133, 1410], Rational[-26, 235]}, {
+           0.09432624113475177, -0.11063829787234042`}], NCache[
+          Rational[1, 47], 0.02127659574468085]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[133, 1410], Rational[-26, 235]}, {
+            0.09432624113475177, -0.11063829787234042`}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[1, 255], Rational[6, 85]}, {0.00392156862745098, 
+           0.07058823529411765}], NCache[
+          Rational[1, 102], 0.00980392156862745]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[1, 255], Rational[6, 85]}, {0.00392156862745098, 
+            0.07058823529411765}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[-7, 170], Rational[
+            12, 85]}, {-0.041176470588235294`, 0.1411764705882353}], NCache[
+          Rational[1, 51], 0.0196078431372549]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[-7, 170], Rational[
+             12, 85]}, {-0.041176470588235294`, 0.1411764705882353}]]}}, 
+        {GrayLevel[0.5], Thickness[Tiny], 
+         CircleBox[
+          NCache[{Rational[3, 35], Rational[4, 35]}, {0.08571428571428572, 
+           0.11428571428571428`}], NCache[
+          Rational[1, 42], 0.023809523809523808`]], 
+         {RGBColor[1, 0.5, 0], PointSize[Large], 
+          PointBox[
+           NCache[{Rational[3, 35], Rational[4, 35]}, {0.08571428571428572, 
+            0.11428571428571428`}]]}}}, 
+       {RGBColor[0.87, 0.94, 1], Opacity[0.4], EdgeForm[{RGBColor[0, 0, 1], 
+        Thickness[Large]}], 
+        PolygonBox[
+         NCache[{{Rational[3, 35], Rational[4, 35]}, {
+           Rational[-7, 170], Rational[12, 85]}, {
+           Rational[-323, 2130], Rational[6, 355]}, {
+           Rational[-77, 555], Rational[-12, 185]}, {
+           Rational[-23, 1770], Rational[-44, 295]}, {
+           Rational[133, 1410], Rational[-26, 235]}}, {{0.08571428571428572, 
+          0.11428571428571428`}, {-0.041176470588235294`, 
+          0.1411764705882353}, {-0.1516431924882629, 
+          0.016901408450704224`}, {-0.13873873873873874`, \
+-0.06486486486486487}, {-0.012994350282485875`, -0.14915254237288136`}, {
+          0.09432624113475177, -0.11063829787234042`}}]]}, InsetBox[
+        StyleBox["\<\"Generation 3\"\>",
+         StripOnInput->False,
+         FontFamily->"Times New Roman",
+         FontSize->18], {0, -0.18333333333333335`}]}], {576., -198.44999999999996`},
+      ImageScaled[{0.5, 0.5}], {360., 377.99999999999994`}]}, {}},
+  ContentSelectable->True,
+  ImageSize->800,
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{
+  3.7199166905783777`*^9, 3.719916729360046*^9, 3.7199167912141542`*^9, 
+   3.719916861570278*^9, 3.7199169172155757`*^9, 3.7199169483532305`*^9, 
+   3.7199170617810297`*^9, {3.719917098924695*^9, 3.719917121341934*^9}, 
+   3.7199171572843976`*^9, 3.719917670712499*^9, 3.719917785700301*^9, 
+   3.7199178366811905`*^9, 3.7199178680216455`*^9, 3.71991791017292*^9, {
+   3.7199179489077883`*^9, 3.7199179936954665`*^9}, 3.719918074098008*^9, 
+   3.7199181070452657`*^9, 3.7199185127707787`*^9, 3.719918657617033*^9, 
+   3.7199187319511633`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"areahull2", "=", 
+   RowBox[{"Area", "[", 
+    RowBox[{"ConvexHullMesh", "[", "pthull2", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"areahull2ideal", "=", 
+   RowBox[{"670", "/", "23023"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ratiohull2", "=", 
+   RowBox[{"areahull2", "*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"cinit", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "^", "2"}], "/", "Pi"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"NumberForm", "[", 
+  RowBox[{"areahull2", ",", "16"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"NumberForm", "[", 
+  RowBox[{"ratiohull2", ",", "16"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.719917274893004*^9, 3.7199172827086177`*^9}, {
+   3.719917350631137*^9, 3.719917393890013*^9}, {3.7199174504713125`*^9, 
+   3.71991746039293*^9}, {3.719917497645795*^9, 3.71991752321424*^9}, {
+   3.719917594381565*^9, 3.719917609607192*^9}, 3.7199176616176834`*^9, {
+   3.719918411604601*^9, 3.7199184611970873`*^9}, 3.7199184947527466`*^9, {
+   3.71991861058295*^9, 3.7199186453710113`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  InterpretationBox["\<\"0.02910133344915954\"\>",
+   0.029101333449159536`,
+   AutoDelete->True],
+  NumberForm[#, 16]& ]], "Output",
+ CellChangeTimes->{3.7199184616182885`*^9, 3.7199185127863784`*^9, 
+  3.7199186576326327`*^9, 3.7199187319511633`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  InterpretationBox["\<\"0.3334767169679465\"\>",
+   0.3334767169679465,
+   AutoDelete->True],
+  NumberForm[#, 16]& ]], "Output",
+ CellChangeTimes->{3.7199184616182885`*^9, 3.7199185127863784`*^9, 
+  3.7199186576326327`*^9, 3.7199187319511633`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"areahull3", "=", 
+   RowBox[{"Area", "[", 
+    RowBox[{"ConvexHullMesh", "[", "pthull3", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"areahull3ideal", "=", 
+   RowBox[{"45650065", "/", "866875849"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ratiohull3", "=", 
+   RowBox[{"areahull3", "*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"cinit", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "^", "2"}], "/", "Pi"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"NumberForm", "[", 
+  RowBox[{"areahull3", ",", "16"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"NumberForm", "[", 
+  RowBox[{"ratiohull3", ",", "16"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7199175372386646`*^9, 3.719917619201209*^9}, {
+  3.719917756918251*^9, 3.719917774639882*^9}, {3.719918469293502*^9, 
+  3.719918498964754*^9}, {3.7199185535180497`*^9, 3.7199185557176533`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  InterpretationBox["\<\"0.05266044157610393\"\>",
+   0.05266044157610393,
+   AutoDelete->True],
+  NumberForm[#, 16]& ]], "Output",
+ CellChangeTimes->{
+  3.7199175482834845`*^9, {3.7199175879075537`*^9, 3.7199176195288095`*^9}, 
+   3.719917670728099*^9, 3.7199177857159014`*^9, 3.719917836712391*^9, 
+   3.719917868052846*^9, 3.7199179102041197`*^9, 3.719917948923388*^9, 
+   3.7199179937110662`*^9, 3.719918074113608*^9, 3.7199181070608654`*^9, {
+   3.7199184997603555`*^9, 3.719918512801978*^9}, {3.7199185538144503`*^9, 
+   3.7199185560920544`*^9}, 3.7199186576482325`*^9, 3.7199187319667635`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  InterpretationBox["\<\"0.6034442099212009\"\>",
+   0.6034442099212008,
+   AutoDelete->True],
+  NumberForm[#, 16]& ]], "Output",
+ CellChangeTimes->{
+  3.7199175482834845`*^9, {3.7199175879075537`*^9, 3.7199176195288095`*^9}, 
+   3.719917670728099*^9, 3.7199177857159014`*^9, 3.719917836712391*^9, 
+   3.719917868052846*^9, 3.7199179102041197`*^9, 3.719917948923388*^9, 
+   3.7199179937110662`*^9, 3.719918074113608*^9, 3.7199181070608654`*^9, {
+   3.7199184997603555`*^9, 3.719918512801978*^9}, {3.7199185538144503`*^9, 
+   3.7199185560920544`*^9}, 3.7199186576482325`*^9, 3.7199187319667635`*^9}]
+}, Open  ]]
+},
+WindowSize->{1366, 686},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7412\:670821\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 157, 3, 31, "Input"],
+Cell[718, 25, 3716, 115, 112, "Input"],
+Cell[4437, 142, 4317, 113, 212, "Input"],
+Cell[8757, 257, 548, 13, 52, "Input"],
+Cell[9308, 272, 1706, 49, 152, "Input"],
+Cell[CellGroupData[{
+Cell[11039, 325, 7257, 203, 472, "Input"],
+Cell[18299, 530, 25269, 513, 645, "Output"]
+}, Open  ]],
+Cell[43583, 1046, 1625, 47, 52, "Input"],
+Cell[CellGroupData[{
+Cell[45233, 1097, 5504, 148, 332, "Input"],
+Cell[50740, 1247, 17882, 394, 453, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[68659, 1646, 1108, 26, 112, "Input"],
+Cell[69770, 1674, 275, 7, 45, "Output"],
+Cell[70048, 1683, 271, 7, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[70356, 1695, 918, 23, 112, "Input"],
+Cell[71277, 1720, 623, 12, 45, "Output"],
+Cell[71903, 1734, 621, 12, 45, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
