@@ -1,5 +1,5 @@
 # RoseCode
 
-- http://www.javaist.com/rosecode/
+- https://rosecode.neocities.org/
 - My own problems
 - My codes and solutions
