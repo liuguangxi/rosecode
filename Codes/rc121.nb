@@ -1,0 +1,172 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5356,        163]
+NotebookOptionsPosition[      4731,        137]
+NotebookOutlinePosition[      5089,        153]
+CellTagsIndexPosition[      5046,        150]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.710062850421853*^9, 3.7100628677918777`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "20000000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"d", "=", 
+   RowBox[{"Rest", "@", 
+    RowBox[{"Partition", "[", 
+     RowBox[{
+      RowBox[{"Rest", "@", 
+       RowBox[{"First", "@", 
+        RowBox[{"RealDigits", "[", 
+         RowBox[{"Pi", ",", "10", ",", 
+          RowBox[{"n", "+", "1"}]}], "]"}]}]}], ",", "10"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"dld", "[", "v_", "]"}], ":=", 
+   RowBox[{"DamerauLevenshteinDistance", "[", 
+    RowBox[{"v", ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", "4", ",", "1", ",", "5", ",", "9", ",", "2", ",", "6", ",", 
+       "5", ",", "3", ",", "5"}], "}"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7100629134019413`*^9, 3.7100629765420294`*^9}, {
+   3.7100630500521326`*^9, 3.7100631010322037`*^9}, {3.7100639994877796`*^9, 
+   3.710064001375383*^9}, 3.7100640568646803`*^9, {3.710064147282439*^9, 
+   3.7100641487488422`*^9}, {3.7100642388078003`*^9, 3.710064239353801*^9}, 
+   3.7100645812440014`*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mind", "=", 
+   RowBox[{"Min", "[", 
+    RowBox[{"dld", "/@", "d"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"v", "=", 
+   RowBox[{"FromDigits", "/@", 
+    RowBox[{"Select", "[", 
+     RowBox[{"d", ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"dld", "[", "#", "]"}], "\[Equal]", "mind"}], "&"}]}], 
+     "]"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.71006319807234*^9, 3.7100632348523912`*^9}, {
+   3.710064035508243*^9, 3.7100640511082706`*^9}, 3.7100641088751717`*^9, {
+   3.7100645629763694`*^9, 3.71006456339757*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"count", "=", 
+   RowBox[{"Length", "[", "v", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7100642040353394`*^9, 3.7100642145029573`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mineuc", "=", 
+   RowBox[{"Min", "[", 
+    RowBox[{"Abs", "[", 
+     RowBox[{"v", "-", "1415926535"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"slice", "=", 
+   RowBox[{
+    RowBox[{"Select", "[", 
+     RowBox[{"v", ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Abs", "[", 
+         RowBox[{"#", "-", "1415926535"}], "]"}], "\[Equal]", "mineuc"}], 
+       "&"}]}], "]"}], "//", "First"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.710064271443057*^9, 3.710064371532833*^9}, {
+  3.710064409160099*^9, 3.710064419066117*^9}, {3.710064465226598*^9, 
+  3.7100645004826593`*^9}, {3.7100645386559267`*^9, 3.710064539997529*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"count", ",", "\"\<,\>\"", ",", "slice"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.71006451208908*^9, 3.7100645293271103`*^9}, 
+   3.710065981700589*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "29", "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1415922513"}],
+  SequenceForm[29, ",", 1415922513],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7100645185786915`*^9, 3.710064543320335*^9}, 
+   3.7100645771567945`*^9, 3.7100646324432917`*^9, 3.7100660248658223`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["v"], "Input",
+ CellChangeTimes->{{3.710065874782674*^9, 3.710065953796812*^9}, {
+  3.710066036051042*^9, 3.7100660482658634`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1145726635", ",", "4715962535", ",", "1016926635", ",", "1415166538", ",", 
+   "1415967735", ",", "1455928505", ",", "1415922513", ",", "1405426533", ",",
+    "8415926832", ",", "1445662535", ",", "1415629585", ",", "1410265350", 
+   ",", "1415259653", ",", "5159236535", ",", "1462906535", ",", "1485921536",
+    ",", "1415876235", ",", "1425826835", ",", "1411126035", ",", 
+   "2416925635", ",", "1415815635", ",", "1466925535", ",", "9410926355", ",",
+    "2140592653", ",", "1915906335", ",", "7715926533", ",", "3415326355", 
+   ",", "1485392635", ",", "1415326436"}], "}"}]], "Output",
+ CellChangeTimes->{{3.7100660382974463`*^9, 3.7100660488430643`*^9}}]
+}, Open  ]]
+},
+WindowSize->{759, 546},
+WindowMargins->{{291, Automatic}, {59, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7412\:670821\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 141, 2, 31, "Input"],
+Cell[702, 24, 1073, 27, 72, "Input"],
+Cell[1778, 53, 590, 16, 52, "Input"],
+Cell[2371, 71, 175, 4, 31, "Input"],
+Cell[2549, 77, 696, 19, 52, "Input"],
+Cell[CellGroupData[{
+Cell[3270, 100, 219, 5, 31, "Input"],
+Cell[3492, 107, 334, 7, 23, "Print"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3863, 119, 144, 2, 31, "Input"],
+Cell[4010, 123, 705, 11, 112, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
