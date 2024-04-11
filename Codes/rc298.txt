@@ -1,0 +1,5 @@
+﻿Key=33445755
+Decoded: V2VsbCBkb25lISBBbnN3ZXIgaXMgMTY2MTE1OTI2Nzg1OTMgKGVudGVyIGFzIGxvd2VyY2FzZSBoZXgp
+
+Base64 decoded:
+Well done! Answer is 16611592678593 (enter as lowercase hex)
