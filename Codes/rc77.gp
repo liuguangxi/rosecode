@@ -1,0 +1,4 @@
+{
+ans = "javaist";
+print(ans);
+}
