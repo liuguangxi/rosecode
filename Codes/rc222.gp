@@ -1,11 +1,10 @@
-/* https://oeis.org/A000186 */
-a(n) = {
-    my(t0 = 0);
-    for (j = 0, n, for (k = 0, n - j,
-        t0 += (2^j/j!)*k!*binomial(-3*(k+1), n-k-j);
-    ));
-    return(n!*t0);
-}
+/*
+Hook length formula
+For a 2*3 rectangle:
+  4  3  2
+  3  2  1
+6!/(4*3*2*3*2*1) = 5
+*/
 
 
 repr(x) = {
@@ -22,8 +21,10 @@ repr(x) = {
 
 
 {
-N = 208;
-s = a(N);
-printf("S(%d) = %d\n", N, s);
-print(repr(s));
+W = 15; H = 20;
+s = (W*H)!;
+for (w = 1, W, for (h = 1, H,
+    s /= W - w + H - h + 1;
+));
+printf("%s\n", repr(s));
 }

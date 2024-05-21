@@ -1,11 +1,9 @@
-/* https://oeis.org/A000186 */
-a(n) = {
-    my(t0 = 0);
-    for (j = 0, n, for (k = 0, n - j,
-        t0 += (2^j/j!)*k!*binomial(-3*(k+1), n-k-j);
-    ));
-    return(n!*t0);
-}
+/*
+m^4 + n^4/4 = (m^2 - m*n + n^2/2) * (m^2 + m*n + n^2/2)
+
+Let m = 3^4^4, n = 2^((5^6+1)/2) =>
+N = 3^4^5 + 4^5^6 = m^4 + n^4/4
+*/
 
 
 repr(x) = {
@@ -22,8 +20,9 @@ repr(x) = {
 
 
 {
-N = 208;
-s = a(N);
-printf("S(%d) = %d\n", N, s);
-print(repr(s));
+m = 3^4^4;
+n = 2^((5^6+1)/2);
+F1 = m^2 - m*n + n^2/2;
+F2 = m^2 + m*n + n^2/2;
+printf("%s,%s\n", repr(F1), repr(F2));
 }
