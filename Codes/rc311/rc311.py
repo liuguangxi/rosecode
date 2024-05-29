@@ -46,7 +46,7 @@ def nimber_product(a, b):
 
   lv_a = nimber_lv(a)
   lv_b = nimber_lv(b)
-  
+
   a_lo, a_hi = nimber_split(lv_a - 1, a)
   if lv_a > lv_b:
     hi = nimber_product(a_hi, b)
@@ -73,8 +73,8 @@ def nimber_sqrt(n):
 
 def nimber_inv(n):
   """
-  Since (hi + lo) * c + hi * d = 0 and hi * H * c + lo * d = 0, 
-    c = hi * (1 / (hi * hi * H + lo * (hi + lo))) and 
+  Since (hi + lo) * c + hi * d = 0 and hi * H * c + lo * d = 0,
+    c = hi * (1 / (hi * hi * H + lo * (hi + lo))) and
     d = (hi + lo) * (1 / (hi * hi * H + lo * (hi + lo))).
   """
   if n <= 1:
@@ -85,7 +85,7 @@ def nimber_inv(n):
   t = nimber_product(lo ^ hi, lo)
   t ^= nimber_product_half(lv - 1, nimber_square(hi))
   t = nimber_inv(t)
-  
+
   lo = nimber_product(lo ^ hi, t)
   hi = nimber_product(hi, t)
   return nimber_combine(lv - 1, lo, hi)
@@ -204,10 +204,10 @@ class Nimber():
       x1, x2 = x2, x1
     return x1, x2
 
-# problem 308
+# problem 311
 # 1061,50205,57082,2917995060,1236498,5124681407284001
 # 0.194 sec.
-def prob308():
+def prob311():
   ABC = [
     [1881, 1923, 1938],
     [6273, 2935220086, 2831770815],
@@ -220,4 +220,4 @@ def prob308():
     ans.append(y)
   print(",".join(map(str, ans)))
 
-prob308()
+prob311()
