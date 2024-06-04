@@ -1,6 +1,6 @@
 ﻿from math import sqrt
 
-def prob404():
+def prob406():
   def isqrt(n):
     x = int(sqrt(n * (1 + 1e-14)))
     while True:
@@ -8,7 +8,7 @@ def prob404():
       if y >= x:
         return x
       x = y
-  
+
   def icbrt(n):
     if n <= 0:
       return 0
@@ -76,4 +76,4 @@ def prob404():
 
   print("%d,%d" % (ans_c, ans_s))
 
-prob404()
+prob406()
