@@ -16,5 +16,5 @@ fordiv (p, d,
     F = A^d * F0;
     if (F == F0, period = d; break);
 );
-printf("P(%d, %d0) = %d\n", K, M, period);    \\ -257,7881197,224,4870846
+printf("P(%d, %d0) = %d\n", K, M, period);    \\ P(10, 10000000000) = 1329900000000
 }
